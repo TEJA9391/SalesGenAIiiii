@@ -22,7 +22,7 @@ export function renderLogin() {
             <input type="text" id="fullName" placeholder="John Doe" 
                    style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: white; outline: none; transition: all 0.3s ease; box-sizing: border-box;"
                    onfocus="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 0 0 2px var(--accent-glow)';"
-                   onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none';">
+                   onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none';" value="Somewhat. Dummy data. To showcase.">
           </div>
 
           <div style="margin-bottom: 1.25rem;">
@@ -30,7 +30,7 @@ export function renderLogin() {
             <input type="email" id="email" required placeholder="you@company.com" 
                    style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: white; outline: none; transition: all 0.3s ease; box-sizing: border-box;"
                    onfocus="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 0 0 2px var(--accent-glow)';"
-                   onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none';">
+                   onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none';" value="dummy@showcase.com">
           </div>
           
           <div style="margin-bottom: 1.5rem;">
@@ -38,7 +38,7 @@ export function renderLogin() {
             <input type="password" id="password" required placeholder="••••••••" 
                    style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: white; outline: none; transition: all 0.3s ease; box-sizing: border-box;"
                    onfocus="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 0 0 2px var(--accent-glow)';"
-                   onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none';">
+                   onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none';" value="password123">
           </div>
 
           <button id="submitBtn" type="submit" 
@@ -104,6 +104,14 @@ export function renderLogin() {
         }, true); // isForm = true for OAuth2PasswordRequestForm
         
         localStorage.setItem('token', res.access_token);
+        localStorage.setItem('sg_access_token', res.access_token);
+        if (res.refresh_token) {
+          localStorage.setItem('sg_refresh_token', res.refresh_token);
+        }
+        if (res.user) {
+          localStorage.setItem('sg_user', JSON.stringify(res.user));
+        }
+        
         router.navigate('/');
       } else {
         // Registration Flow

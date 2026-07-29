@@ -362,17 +362,17 @@ function renderABMCardView(container: HTMLElement) {
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div>
               <label style="font-size: 0.8rem; color: var(--text-secondary);">Company Name *</label>
-              <input type="text" id="mCompName" required placeholder="Acme Corporation" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;" />
+              <input type="text" id="mCompName" required placeholder="Acme Corporation" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;"  value="Somewhat. Dummy data. To showcase." />
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               <div>
                 <label style="font-size: 0.8rem; color: var(--text-secondary);">Industry</label>
-                <input type="text" id="mCompIndustry" placeholder="Software & SaaS" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;" />
+                <input type="text" id="mCompIndustry" placeholder="Software & SaaS" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;"  value="Somewhat. Dummy data. To showcase." />
               </div>
               <div>
                 <label style="font-size: 0.8rem; color: var(--text-secondary);">Website URL</label>
-                <input type="text" id="mCompWebsite" placeholder="https://acme.com" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;" />
+                <input type="text" id="mCompWebsite" placeholder="https://acme.com" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;"  value="Somewhat. Dummy data. To showcase." />
               </div>
             </div>
 
@@ -389,13 +389,13 @@ function renderABMCardView(container: HTMLElement) {
               </div>
               <div>
                 <label style="font-size: 0.8rem; color: var(--text-secondary);">Annual Revenue</label>
-                <input type="text" id="mCompRevenue" placeholder="$10M - $50M" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;" />
+                <input type="text" id="mCompRevenue" placeholder="$10M - $50M" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;"  value="Somewhat. Dummy data. To showcase." />
               </div>
             </div>
 
             <div>
               <label style="font-size: 0.8rem; color: var(--text-secondary);">Location / Headquarters</label>
-              <input type="text" id="mCompLocation" placeholder="San Francisco, CA, USA" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;" />
+              <input type="text" id="mCompLocation" placeholder="San Francisco, CA, USA" style="width: 100%; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; margin-top: 0.25rem;"  value="Somewhat. Dummy data. To showcase." />
             </div>
 
             <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">

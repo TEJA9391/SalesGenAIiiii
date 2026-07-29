@@ -36,13 +36,10 @@ export function createLayout(activePath: string, content: string): string {
     return `
     <div style="display: flex; height: 100vh; overflow: hidden; background: transparent;">
       <!-- Sidebar -->
-      <aside id="appSidebar" class="glass" style="width: 260px; display: flex; flex-direction: column; padding: 1.5rem; margin: 1rem; position: fixed; height: calc(100vh - 2rem); overflow-y: auto; z-index: 50; transition: width 0.3s ease;">
+      <aside id="appSidebar" class="glass collapsed" style="width: 260px; display: flex; flex-direction: column; padding: 1.5rem; margin: 1rem; position: fixed; height: calc(100vh - 2rem); overflow-y: auto; z-index: 50; transition: width 0.3s ease;">
         <div id="sidebarHeader" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; flex-direction: row;">
-          <div style="width: 28px; height: 28px; background: var(--primary-gradient); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          </div>
+          <img src="/logo.jpg" alt="SalesGenie AI" style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; border-radius: 6px; box-shadow: 0 2px 8px rgba(134, 59, 255, 0.2);" />
           <span class="sidebar-text" style="font-weight: 600; font-size: 1.1rem; letter-spacing: -0.5px; opacity: 1; transition: opacity 0.2s; white-space: nowrap;">SalesGenie AI</span>
-          <svg class="toggle-icon" onclick="window.toggleSidebar()" style="margin-left: auto; cursor: pointer; color: var(--text-secondary); flex-shrink: 0;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
         </div>
         
         <nav style="display: flex; flex-direction: column; gap: 0.25rem; flex: 1;">
@@ -75,7 +72,7 @@ export function createLayout(activePath: string, content: string): string {
       </aside>
 
       <!-- Main Content -->
-      <main id="appMain" style="flex: 1; margin-left: 292px; padding: 2rem; max-width: 1400px; margin-right: auto; overflow-y: auto; height: 100vh; padding-bottom: 4rem; transition: margin-left 0.3s ease; min-width: 0;">
+      <main id="appMain" style="flex: 1; margin-left: 112px; padding: 2rem; max-width: 1400px; margin-right: auto; overflow-y: auto; height: 100vh; padding-bottom: 4rem; transition: margin-left 0.3s ease; min-width: 0;">
         
         <!-- Header -->
         <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; position: relative; background: transparent; padding-top: 1rem; padding-bottom: 1rem; z-index: 40; border-bottom: none;" id="mainHeader">

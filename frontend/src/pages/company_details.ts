@@ -243,10 +243,10 @@ function renderTabBody(c: any): string {
         </div>
         <form onsubmit="saveCompanyContact(event, '${companyId}')">
           <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <input type="text" id="cntFn" required placeholder="First Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
-            <input type="text" id="cntLn" required placeholder="Last Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
-            <input type="email" id="cntEm" required placeholder="Email Address" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
-            <input type="text" id="cntJt" placeholder="Job Title (e.g. VP of Sales)" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
+            <input type="text" id="cntFn" required placeholder="First Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
+            <input type="text" id="cntLn" required placeholder="Last Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
+            <input type="email" id="cntEm" required placeholder="Email Address" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="dummy@showcase.com" />
+            <input type="text" id="cntJt" placeholder="Job Title (e.g. VP of Sales)" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
             <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
               <button type="button" class="icon-btn" onclick="document.getElementById('addCompanyContactModal').remove()">Cancel</button>
               <button type="submit" class="gradient-btn">Save Contact</button>

@@ -403,7 +403,7 @@ async function renderForecastView(container: HTMLElement) {
 
         <form onsubmit="saveNewStage(event)">
           <div style="display: flex; gap: 0.5rem;">
-            <input type="text" id="newStgName" required placeholder="New Stage Name" style="flex: 1; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
+            <input type="text" id="newStgName" required placeholder="New Stage Name" style="flex: 1; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
             <input type="number" id="newStgProb" min="0" max="100" value="50" placeholder="Prob %" style="width: 80px; padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
             <button type="submit" class="gradient-btn">+ Add Stage</button>
           </div>

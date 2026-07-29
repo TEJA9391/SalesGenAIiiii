@@ -59,6 +59,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+import traceback
+from fastapi.responses import PlainTextResponse
+from fastapi import Request
+
+@app.middleware("http")
+async def catch_exceptions_middleware(request: Request, call_next):
+    try:
+        return await call_next(request)
+    except Exception as e:
+        return PlainTextResponse(traceback.format_exc(), status_code=500)
+
+
 # Register all routers (they already carry their /api/* prefix)
 app.include_router(auth_router)
 app.include_router(users_router)

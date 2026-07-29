@@ -11,7 +11,7 @@ export function renderNotifications() {
                 <p id="notifSubtitle" style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Loading...</p>
             </div>
             <div style="display: flex; gap: 0.5rem;">
-                <button onclick="(window as any).markAllRead()" class="icon-btn" style="padding: 0.5rem 1rem; border-radius: var(--border-radius-md); font-size: 0.85rem; border: 1px solid var(--border-color); background: transparent; color: white;">Mark all read</button>
+                <button onclick="window.markAllRead()" class="icon-btn" style="padding: 0.5rem 1rem; border-radius: var(--border-radius-md); font-size: 0.85rem; border: 1px solid var(--border-color); background: transparent; color: white;">Mark all read</button>
             </div>
         </div>
 
@@ -132,12 +132,12 @@ export function renderNotifications() {
                           <div style="font-size: 0.75rem; color: var(--text-secondary);">${dateStr}</div>
                       </div>
                       <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem; line-height: 1.4;">${n.message}</div>
-                      ${n.link ? `<a href="#" onclick="(window as any).navigate('${n.link}'); return false;" style="font-size: 0.85rem; color: var(--primary-color); text-decoration: none; font-weight: 500;">View Details &rarr;</a>` : ''}
+                      ${n.link ? `<a href="#" onclick="window.navigate('${n.link}'); return false;" style="font-size: 0.85rem; color: var(--primary-color); text-decoration: none; font-weight: 500;">View Details &rarr;</a>` : ''}
                   </div>
                   <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end;">
-                      ${!n.is_read ? `<button class="notif-action-btn" onclick="(window as any).markRead('${n.id}')" title="Mark as read"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></button>` : ''}
-                      ${!n.is_archived ? `<button class="notif-action-btn" onclick="(window as any).archiveNotif('${n.id}')" title="Archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg></button>` : `<button class="notif-action-btn" onclick="(window as any).restoreNotif('${n.id}')" title="Restore"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg></button>`}
-                      <button class="notif-action-btn" onclick="(window as any).deleteNotif('${n.id}')" title="Delete"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                      ${!n.is_read ? `<button class="notif-action-btn" onclick="window.markRead('${n.id}')" title="Mark as read"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></button>` : ''}
+                      ${!n.is_archived ? `<button class="notif-action-btn" onclick="window.archiveNotif('${n.id}')" title="Archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg></button>` : `<button class="notif-action-btn" onclick="window.restoreNotif('${n.id}')" title="Restore"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg></button>`}
+                      <button class="notif-action-btn" onclick="window.deleteNotif('${n.id}')" title="Delete"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
                   </div>
               </div>
               `;

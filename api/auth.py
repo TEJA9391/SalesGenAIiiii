@@ -76,13 +76,19 @@ def _create_user_session(user_id: str, db: Session, request: Request) -> tuple[s
     )
     db.add(session)
 
+    user = db.query(User).filter(User.id == user_id).first()
+    org_id = user.organization_id if user else "system"
+
     # Log audit entry
     audit = AuditLog(
+        organization_id=org_id,
         user_id=user_id,
         action="USER_LOGIN",
-        details=f"User logged in from {client_ip}",
+        entity_type="User",
+        entity_id=user_id,
+        changes=f"User logged in from {client_ip}",
         ip_address=client_ip,
-        user_agent=user_agent
+        device_info=user_agent
     )
     db.add(audit)
     db.commit()
@@ -221,11 +227,14 @@ def logout(
 
     # Log audit entry
     audit = AuditLog(
+        organization_id=current_user.organization_id,
         user_id=current_user.id,
         action="USER_LOGOUT",
-        details="User logged out cleanly",
+        entity_type="User",
+        entity_id=current_user.id,
+        changes="User logged out cleanly",
         ip_address=request.client.host if request.client else "127.0.0.1",
-        user_agent=request.headers.get("user-agent", "")
+        device_info=request.headers.get("user-agent", "")
     )
     db.add(audit)
     db.commit()
@@ -242,11 +251,14 @@ def logout_all(
     db.query(UserSession).filter(UserSession.user_id == current_user.id).update({"is_revoked": True})
     
     audit = AuditLog(
+        organization_id=current_user.organization_id,
         user_id=current_user.id,
         action="USER_LOGOUT_ALL",
-        details="User revoked all active device sessions",
+        entity_type="User",
+        entity_id=current_user.id,
+        changes="User revoked all active device sessions",
         ip_address=request.client.host if request.client else "127.0.0.1",
-        user_agent=request.headers.get("user-agent", "")
+        device_info=request.headers.get("user-agent", "")
     )
     db.add(audit)
     db.commit()
@@ -267,9 +279,12 @@ def change_password(
     db.query(UserSession).filter(UserSession.user_id == current_user.id).update({"is_revoked": True})
     
     audit = AuditLog(
+        organization_id=current_user.organization_id,
         user_id=current_user.id,
         action="PASSWORD_CHANGED",
-        details="User updated password and revoked active sessions",
+        entity_type="User",
+        entity_id=current_user.id,
+        changes="User updated password and revoked active sessions",
     )
     db.add(audit)
     db.commit()

@@ -91,7 +91,7 @@ export function renderDashboard() {
             <div class="glass-card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                     <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600;">Upcoming Tasks</h3>
-                    <a href="javascript:void(0)" onclick="(window as any).navigate('/tasks')" style="font-size: 0.75rem; color: var(--secondary-color); text-decoration: none;">View all</a>
+                    <a href="javascript:void(0)" onclick="window.navigate('/tasks')" style="font-size: 0.75rem; color: var(--secondary-color); text-decoration: none;">View all</a>
                 </div>
                 <div id="tasksList" style="display: flex; flex-direction: column; gap: 1rem;"></div>
             </div>

@@ -392,12 +392,14 @@ mark.highlight {
 .search-res-item:hover, .search-res-item.active { background: rgba(255,255,255,0.05); }
 
 /* Collapsed Sidebar Styles */
-#appSidebar { transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; }
 #appSidebar.collapsed { width: 80px !important; padding-left: 1rem !important; padding-right: 1rem !important; }
-#appSidebar.collapsed .sidebar-text { opacity: 0 !important; pointer-events: none; width: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden; display: none !important; }
-#appSidebar.collapsed .nav-item { justify-content: center; padding-left: 0 !important; padding-right: 0 !important; }
-#appSidebar.collapsed #userMenuTrigger { justify-content: center; padding: 0.5rem 0 !important; }
-#appSidebar.collapsed .toggle-icon { margin-left: 0 !important; transform: rotate(180deg); }
+#appSidebar.collapsed:not(:hover) .sidebar-text { opacity: 0 !important; pointer-events: none; width: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden; display: none !important; }
+#appSidebar.collapsed:hover { width: 260px !important; padding: 1.5rem !important; }
+#appSidebar.collapsed:hover .sidebar-text { opacity: 1 !important; pointer-events: auto; display: block; }
+#appSidebar.collapsed:not(:hover) .nav-item { justify-content: center; padding-left: 0 !important; padding-right: 0 !important; }
+#appSidebar.collapsed:not(:hover) #userMenuTrigger { justify-content: center; padding: 0.5rem 0 !important; }
+#appSidebar.collapsed:not(:hover) .toggle-icon { margin-left: 0 !important; transform: rotate(180deg); }
+#appSidebar { transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; }
 #appSidebar .toggle-icon { transition: transform 0.3s ease; }
 
 /* ========================================================== */

@@ -67,7 +67,7 @@ export function renderUpdates() {
                       
                       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
                           <div style="font-size: 0.85rem; color: ${iconColor}; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">${dateStr} Release</div>
-                          ${!r.is_read ? `<button onclick="(window as any).markUpdateRead('${r.id}')" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Mark Read</button>` : `<div style="font-size: 0.75rem; color: var(--text-secondary);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Read</div>`}
+                          ${!r.is_read ? `<button onclick="window.markUpdateRead('${r.id}')" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Mark Read</button>` : `<div style="font-size: 0.75rem; color: var(--text-secondary);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Read</div>`}
                       </div>
                       
                       <h2 style="font-size: 1.5rem; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.75rem;">

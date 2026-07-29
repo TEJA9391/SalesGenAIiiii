@@ -17,7 +17,7 @@ export function renderConversations() {
             <button class="gradient-btn" onclick="openSubmitTranscriptModal()" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">+ Analyze Call</button>
           </div>
           <div style="position: relative;">
-            <input type="text" placeholder="Search conversations..." oninput="handleConvSearch(this.value)" style="width: 100%; padding: 0.5rem 1rem 0.5rem 2.5rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); color: white; outline: none; font-size: 0.8rem; box-sizing: border-box;">
+            <input type="text" placeholder="Search conversations..." oninput="handleConvSearch(this.value)" style="width: 100%; padding: 0.5rem 1rem 0.5rem 2.5rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); color: white; outline: none; font-size: 0.8rem; box-sizing: border-box;" value="Somewhat. Dummy data. To showcase.">
             <svg style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </div>
         </div>
@@ -115,7 +115,7 @@ function renderSelectedThread() {
     <!-- Reply Box -->
     <div style="padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-color);">
       <div style="border: 1px solid var(--border-color); border-radius: var(--border-radius-md); background: var(--card-bg); overflow: hidden;">
-        <textarea id="convReplyTextArea" placeholder="Reply to ${c.contact_name}..." style="width: 100%; height: 90px; padding: 1rem; background: transparent; border: none; color: white; outline: none; resize: none; font-family: inherit; font-size: 0.85rem; box-sizing: border-box;"></textarea>
+        <textarea id="convReplyTextArea" placeholder="Reply to ${c.contact_name}..." style="width: 100%; height: 90px; padding: 1rem; background: transparent; border: none; color: white; outline: none; resize: none; font-family: inherit; font-size: 0.85rem; box-sizing: border-box;">Somewhat. Dummy data. To showcase.</textarea>
         <div style="padding: 0.75rem 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end;">
           <button id="sendMsgBtn" class="gradient-btn" onclick="simulateSendMessage()" style="padding: 0.4rem 1.2rem; font-size: 0.8rem; min-width: 120px;">Send Message</button>
         </div>
@@ -245,14 +245,14 @@ function renderIntelligencePanel() {
         </div>
         <form onsubmit="executeTranscriptAnalysis(event)">
           <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <input type="text" id="trTitle" required placeholder="Meeting Title (e.g. Acme Corp Sales Call)" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
+            <input type="text" id="trTitle" required placeholder="Meeting Title (e.g. Acme Corp Sales Call)" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-              <input type="text" id="trContact" placeholder="Contact Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
-              <input type="email" id="trEmail" placeholder="Contact Email" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
+              <input type="text" id="trContact" placeholder="Contact Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
+              <input type="email" id="trEmail" placeholder="Contact Email" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="dummy@showcase.com" />
             </div>
 
-            <textarea id="trText" required placeholder="Paste call transcript or meeting notes text here..." style="width: 100%; height: 140px; padding: 0.75rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px; font-family: inherit; font-size: 0.85rem; outline: none; resize: none;"></textarea>
+            <textarea id="trText" required placeholder="Paste call transcript or meeting notes text here..." style="width: 100%; height: 140px; padding: 0.75rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px; font-family: inherit; font-size: 0.85rem; outline: none; resize: none;">Somewhat. Dummy data. To showcase.</textarea>
 
             <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem;">
               <button type="button" class="icon-btn" onclick="document.getElementById('submitTranscriptModal').remove()">Cancel</button>

@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", "salesgenie")
     POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", "salesgenie_password")
     POSTGRES_DB: str = os.getenv("POSTGRES_DB", "salesgenie_db")
-    SQLALCHEMY_DATABASE_URI: str = "sqlite:///./salesgenie.db"
+    SQLALCHEMY_DATABASE_URI: str = "sqlite:///./salesgenie_dev.db"
     
     # Redis / Celery Config (future proofing)
     REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")

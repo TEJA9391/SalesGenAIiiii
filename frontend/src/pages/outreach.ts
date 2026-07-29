@@ -30,7 +30,7 @@ export function renderOutreach() {
     <div class="glass-card" style="padding: 1.5rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
         <h3 style="margin: 0; font-size: 1.1rem; font-weight: 700;">Active Sequences & Campaigns</h3>
-        <input type="text" placeholder="Search campaigns..." oninput="filterCampaigns(this.value)" style="padding: 0.5rem 1rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; outline: none; font-size: 0.85rem;" />
+        <input type="text" placeholder="Search campaigns..." oninput="filterCampaigns(this.value)" style="padding: 0.5rem 1rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: white; outline: none; font-size: 0.85rem;"  value="Somewhat. Dummy data. To showcase." />
       </div>
 
       <div id="outreachCampaignsTableRoot">
@@ -174,7 +174,7 @@ async function fetchOutreachData() {
               <!-- Output Box -->
               <div id="aiOutreachOutputBox" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px;">
                 <div style="font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;" id="aiOutreachSubject"></div>
-                <textarea id="aiOutreachBody" style="width: 100%; height: 140px; background: transparent; border: none; color: white; font-family: inherit; font-size: 0.85rem; outline: none; resize: none;"></textarea>
+                <textarea id="aiOutreachBody" style="width: 100%; height: 140px; background: transparent; border: none; color: white; font-family: inherit; font-size: 0.85rem; outline: none; resize: none;">Somewhat. Dummy data. To showcase.</textarea>
                 <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem;">
                   <button type="button" class="icon-btn" onclick="navigator.clipboard.writeText(document.getElementById('aiOutreachBody').innerText); alert('Copied to clipboard!');" style="font-size: 0.75rem;">📋 Copy</button>
                 </div>
@@ -231,7 +231,7 @@ async function fetchOutreachData() {
         </div>
         <form onsubmit="saveNewCampaign(event)">
           <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <input type="text" id="cName" required placeholder="Campaign Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;" />
+            <input type="text" id="cName" required placeholder="Campaign Name" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;"  value="Somewhat. Dummy data. To showcase." />
             <select id="cChannel" style="padding: 0.6rem; background: var(--bg-color); border: 1px solid var(--border-color); color: white; border-radius: 4px;">
               <option value="Email">Cold Email Sequence</option>
               <option value="LinkedIn">LinkedIn InMail Sequence</option>

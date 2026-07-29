@@ -20,36 +20,36 @@ export function renderTasks() {
             <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Manage your daily sales activities</p>
         </div>
         <div style="display: flex; gap: 1rem;">
-            <button class="gradient-btn" onclick="(window as any).openAddTaskModal()">+ New Task</button>
-            <button style="background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Export CSV</button>
+            <button class="gradient-btn" onclick="window.openAddTaskModal()">+ New Task</button>
+            <button onclick="window.exportTasksCSV()" style="background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Export CSV</button>
         </div>
     </div>
 
     <!-- Filters Bar -->
     <div class="glass-card" style="padding: 1rem; margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-        <input type="text" id="tSearch" placeholder="Search tasks..." style="flex: 1; min-width: 200px; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; outline: none;" oninput="(window as any).handleTaskFilterChange()">
+        <input type="text" id="tSearch" placeholder="Search tasks..." style="flex: 1; min-width: 200px; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; outline: none;" oninput="(window as any).handleTaskFilterChange()" value="Somewhat. Dummy data. To showcase.">
         
-        <select id="fPriority" onchange="(window as any).handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
+        <select id="fPriority" onchange="window.handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
             <option value="">All Priorities</option>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
         </select>
 
-        <select id="fCategory" onchange="(window as any).handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
+        <select id="fCategory" onchange="window.handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
             <option value="">All Categories</option>
             <option value="Follow-up">Follow-up</option>
             <option value="Preparation">Preparation</option>
             <option value="Review">Review</option>
         </select>
 
-        <select id="fStatus" onchange="(window as any).handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
+        <select id="fStatus" onchange="window.handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
             <option value="">All Statuses</option>
             <option value="false">Pending</option>
             <option value="true">Completed</option>
         </select>
 
-        <select id="fSort" onchange="(window as any).handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
+        <select id="fSort" onchange="window.handleTaskFilterChange()" style="background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.5rem; border-radius: 6px; outline: none;">
             <option value="due_date_asc">Due Date (Earliest)</option>
             <option value="due_date_desc">Due Date (Latest)</option>
             <option value="created_desc">Recently Created</option>
@@ -60,9 +60,9 @@ export function renderTasks() {
     <div id="bulkActionBar" class="glass-card" style="display: none; padding: 0.75rem 1.5rem; margin-bottom: 1.5rem; background: rgba(124, 58, 237, 0.1); border: 1px solid var(--primary-color); align-items: center; justify-content: space-between;">
         <div style="font-weight: 600; font-size: 0.95rem; color: white;"><span id="bulkCount">0</span> tasks selected</div>
         <div style="display: flex; gap: 1rem;">
-            <button onclick="(window as any).handleBulkAction('complete')" style="background: var(--success-color); border: none; color: white; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Mark Complete</button>
-            <button onclick="(window as any).handleBulkAction('reopen')" style="background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Mark Pending</button>
-            <button onclick="(window as any).handleBulkAction('delete')" style="background: var(--danger-color); border: none; color: white; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Delete Selected</button>
+            <button onclick="window.handleBulkAction('complete')" style="background: var(--success-color); border: none; color: white; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Mark Complete</button>
+            <button onclick="window.handleBulkAction('reopen')" style="background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Mark Pending</button>
+            <button onclick="window.handleBulkAction('delete')" style="background: var(--danger-color); border: none; color: white; padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Delete Selected</button>
         </div>
     </div>
 
@@ -70,7 +70,7 @@ export function renderTasks() {
         <div style="flex: 1;">
             <div class="glass-card" style="padding: 0; margin-bottom: 2rem; overflow: hidden;">
                 <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; background: rgba(255,255,255,0.02);">
-                    <input type="checkbox" id="selectAllTasks" onchange="(window as any).toggleSelectAll(this.checked)" style="width: 16px; height: 16px; margin-right: 1.5rem; cursor: pointer;">
+                    <input type="checkbox" id="selectAllTasks" onchange="window.toggleSelectAll(this.checked)" style="width: 16px; height: 16px; margin-right: 1.5rem; cursor: pointer;">
                     <div style="flex: 1; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary);">TASK DETAILS</div>
                     <div style="width: 150px; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary);">DUE DATE</div>
                     <div style="width: 100px; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary); text-align: right;">ACTIONS</div>
@@ -121,16 +121,16 @@ export function renderTasks() {
       <div class="glass-card" style="width: 100%; max-width: 600px; padding: 2rem; max-height: 90vh; overflow-y: auto;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
           <h2 style="margin: 0; font-size: 1.25rem;">New Task</h2>
-          <button onclick="(window as any).closeAddTaskModal()" style="background: transparent; border: none; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer;">&times;</button>
+          <button onclick="window.closeAddTaskModal()" style="background: transparent; border: none; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer;">&times;</button>
         </div>
-        <form id="addTaskForm" onsubmit="(window as any).submitNewTask(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+        <form id="addTaskForm" onsubmit="window.submitNewTask(event)" style="display: flex; flex-direction: column; gap: 1rem;">
           <div>
             <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">Title</label>
-            <input type="text" id="tTitle" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;">
+            <input type="text" id="tTitle" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;" value="Somewhat. Dummy data. To showcase.">
           </div>
           <div>
             <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">Description</label>
-            <textarea id="tDesc" rows="3" style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none; resize: vertical;"></textarea>
+            <textarea id="tDesc" rows="3" style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none; resize: vertical;">Somewhat. Dummy data. To showcase.</textarea>
           </div>
           <div style="display: flex; gap: 1rem;">
             <div style="flex: 1;">
@@ -163,11 +163,11 @@ export function renderTasks() {
             </div>
             <div style="flex: 1;">
               <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">Due Date & Time</label>
-              <input type="datetime-local" id="tDue" style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;">
+              <input type="datetime-local" id="tDue" style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;" value="2026-07-29T12:00">
             </div>
           </div>
           <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
-            <button type="button" onclick="(window as any).closeAddTaskModal()" style="background: transparent; border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Cancel</button>
+            <button type="button" onclick="window.closeAddTaskModal()" style="background: transparent; border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Cancel</button>
             <button type="submit" class="gradient-btn">Create Task</button>
           </div>
         </form>
@@ -297,6 +297,47 @@ export function renderTasks() {
       loadTasksData();
   };
 
+  (window as any).exportTasksCSV = async () => {
+      try {
+          showToast('Preparing CSV...', 'info');
+          const queryParams: any = { ...currentFilters };
+          Object.keys(queryParams).forEach(key => {
+              if (queryParams[key] === '') delete queryParams[key];
+          });
+          const res = await getTasks(queryParams);
+          const tasks = res.data || [];
+          if (tasks.length === 0) {
+              showToast('No tasks to export', 'warning');
+              return;
+          }
+          
+          const headers = ['ID', 'Title', 'Description', 'Type', 'Category', 'Priority', 'Status', 'Due Date', 'Created At'];
+          const rows = tasks.map((t: any) => [
+              t.id,
+              `"${(t.title || '').replace(/"/g, '""')}"`,
+              `"${(t.description || '').replace(/"/g, '""')}"`,
+              t.task_type,
+              t.category || '',
+              t.priority,
+              t.is_completed ? 'Completed' : 'Pending',
+              t.due_date ? new Date(t.due_date).toLocaleString() : '',
+              t.created_at ? new Date(t.created_at).toLocaleString() : ''
+          ]);
+          
+          const csvContent = [headers.join(','), ...rows.map((r: any[]) => r.join(','))].join('\n');
+          const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.setAttribute('href', url);
+          link.setAttribute('download', `tasks_export_${new Date().toISOString().split('T')[0]}.csv`);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      } catch (err: any) {
+          showToast('Failed to export CSV', 'error');
+      }
+  };
+
   loadTasksData();
 }
 
@@ -383,7 +424,7 @@ function renderTaskRow(t: any) {
 
     return `
         <div class="task-row" style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'">
-            <input type="checkbox" class="task-checkbox" value="${t.id}" onchange="(window as any).toggleTaskSelection('${t.id}', this.checked)" style="width: 16px; height: 16px; margin-right: 1.5rem; cursor: pointer;">
+            <input type="checkbox" class="task-checkbox" value="${t.id}" onchange="window.toggleTaskSelection('${t.id}', this.checked)" style="width: 16px; height: 16px; margin-right: 1.5rem; cursor: pointer;">
             
             <div style="flex: 1; min-width: 0;">
                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.2rem;">
@@ -403,9 +444,9 @@ function renderTaskRow(t: any) {
             </div>
             
             <div style="width: 100px; display: flex; justify-content: flex-end; gap: 0.5rem; align-items: center;">
-                <button type="button" class="icon-btn" onclick="(window as any).toggleTaskStatus('${t.id}', ${t.is_completed})" style="padding: 0.3rem; color: ${t.is_completed ? 'var(--warning-color)' : 'var(--success-color)'}; font-size: 1rem; border: none; background: transparent; cursor: pointer;" title="${t.is_completed ? 'Reopen' : 'Complete'}">${t.is_completed ? '↺' : '✓'}</button>
-                <button type="button" class="icon-btn" onclick="(window as any).duplicateTaskItem('${t.id}')" style="padding: 0.3rem; color: var(--secondary-color); font-size: 1rem; border: none; background: transparent; cursor: pointer;" title="Duplicate">⎘</button>
-                <button type="button" class="icon-btn" onclick="(window as any).deleteTaskItem('${t.id}')" style="padding: 0.3rem; color: var(--danger-color); font-size: 1rem; border: none; background: transparent; cursor: pointer;" title="Delete">🗑️</button>
+                <button type="button" class="icon-btn" onclick="window.toggleTaskStatus('${t.id}', ${t.is_completed})" style="padding: 0.3rem; color: ${t.is_completed ? 'var(--warning-color)' : 'var(--success-color)'}; font-size: 1rem; border: none; background: transparent; cursor: pointer;" title="${t.is_completed ? 'Reopen' : 'Complete'}">${t.is_completed ? '↺' : '✓'}</button>
+                <button type="button" class="icon-btn" onclick="window.duplicateTaskItem('${t.id}')" style="padding: 0.3rem; color: var(--secondary-color); font-size: 1rem; border: none; background: transparent; cursor: pointer;" title="Duplicate">⎘</button>
+                <button type="button" class="icon-btn" onclick="window.deleteTaskItem('${t.id}')" style="padding: 0.3rem; color: var(--danger-color); font-size: 1rem; border: none; background: transparent; cursor: pointer;" title="Delete">🗑️</button>
             </div>
         </div>
     `;

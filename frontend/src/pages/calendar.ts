@@ -10,7 +10,7 @@ export function renderCalendar() {
             <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Manage meetings and schedule your day.</p>
         </div>
         <div style="display: flex; gap: 1rem;">
-            <button class="gradient-btn" onclick="(window as any).openAddMeetingModal()">+ Schedule Meeting</button>
+            <button class="gradient-btn" onclick="window.openAddMeetingModal()">+ Schedule Meeting</button>
         </div>
     </div>
 
@@ -23,29 +23,29 @@ export function renderCalendar() {
       <div class="glass-card" style="width: 100%; max-width: 500px; padding: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
           <h2 style="margin: 0; font-size: 1.25rem;">Schedule Meeting</h2>
-          <button onclick="(window as any).closeAddMeetingModal()" style="background: transparent; border: none; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer;">&times;</button>
+          <button onclick="window.closeAddMeetingModal()" style="background: transparent; border: none; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer;">&times;</button>
         </div>
         <form id="addMeetingForm" style="display: flex; flex-direction: column; gap: 1rem;">
           <div>
             <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">Title</label>
-            <input type="text" id="mTitle" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;">
+            <input type="text" id="mTitle" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;" value="Somewhat. Dummy data. To showcase.">
           </div>
           <div style="display: flex; gap: 1rem;">
             <div style="flex: 1;">
               <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">Start Time</label>
-              <input type="datetime-local" id="mStart" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;">
+              <input type="datetime-local" id="mStart" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;" value="2026-07-29T12:00">
             </div>
             <div style="flex: 1;">
               <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">End Time</label>
-              <input type="datetime-local" id="mEnd" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;">
+              <input type="datetime-local" id="mEnd" required style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;" value="2026-07-29T12:00">
             </div>
           </div>
           <div>
             <label style="display: block; font-size: 0.8rem; margin-bottom: 0.4rem; color: var(--text-secondary);">Meeting URL (Zoom/Teams)</label>
-            <input type="url" id="mUrl" style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;">
+            <input type="url" id="mUrl" style="width: 100%; background: var(--bg-color); border: 1px solid var(--border-color); color: white; padding: 0.75rem; border-radius: var(--border-radius-sm); outline: none;" value="https://showcase.com">
           </div>
           <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
-            <button type="button" onclick="(window as any).closeAddMeetingModal()" style="background: transparent; border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Cancel</button>
+            <button type="button" onclick="window.closeAddMeetingModal()" style="background: transparent; border: 1px solid var(--border-color); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">Cancel</button>
             <button type="submit" class="gradient-btn">Schedule</button>
           </div>
         </form>
@@ -59,7 +59,7 @@ export function renderCalendar() {
           <h2 style="margin: 0; font-size: 1.25rem;" id="detTitle">Meeting Title</h2>
           <div style="display: flex; gap: 1rem; align-items: center;">
             <button id="btnDeleteMeeting" class="icon-btn" style="color: var(--danger-color); border: none; background: transparent; cursor: pointer; font-size: 1.1rem;" title="Delete Meeting">🗑️</button>
-            <button onclick="(window as any).closeMeetingDetailsModal()" style="background: transparent; border: none; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer;">&times;</button>
+            <button onclick="window.closeMeetingDetailsModal()" style="background: transparent; border: none; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer;">&times;</button>
           </div>
         </div>
         <div style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-secondary);" id="detTime"></div>

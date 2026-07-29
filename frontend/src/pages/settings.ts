@@ -67,31 +67,31 @@ export function renderSettings() {
                                 <img id="profileAvatar" src="https://ui-avatars.com/api/?name=User" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div style="display: flex; flex-direction: column; justify-content: center; gap: 0.5rem;">
-                                <input type="file" id="avatarUpload" accept="image/png, image/jpeg, image/gif" style="display: none;" onchange="(window as any).handleAvatarUpload(this)">
+                                <input type="file" id="avatarUpload" accept="image/png, image/jpeg, image/gif" style="display: none;" onchange="window.handleAvatarUpload(this)">
                                 <div style="display: flex; gap: 1rem;">
                                     <button onclick="document.getElementById('avatarUpload').click()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Upload Photo</button>
-                                    <button onclick="(window as any).removeAvatar()" style="background: transparent; border: 1px solid var(--border-color); color: var(--danger-color); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Remove</button>
+                                    <button onclick="window.removeAvatar()" style="background: transparent; border: 1px solid var(--border-color); color: var(--danger-color); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Remove</button>
                                 </div>
                                 <div style="font-size: 0.75rem; color: var(--text-secondary);">JPG, GIF or PNG. Max size 2MB.</div>
                             </div>
                         </div>
 
-                        <form id="profileForm" onsubmit="(window as any).saveProfile(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <form id="profileForm" onsubmit="window.saveProfile(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Full Name</label>
-                                <input type="text" id="profFullName" class="settings-input" required>
+                                <input type="text" id="profFullName" class="settings-input" required value="Somewhat. Dummy data. To showcase.">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Phone Number</label>
-                                <input type="text" id="profPhone" class="settings-input">
+                                <input type="text" id="profPhone" class="settings-input" value="Somewhat. Dummy data. To showcase.">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Job Title</label>
-                                <input type="text" id="profTitle" class="settings-input">
+                                <input type="text" id="profTitle" class="settings-input" value="Somewhat. Dummy data. To showcase.">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Department</label>
-                                <input type="text" id="profDept" class="settings-input">
+                                <input type="text" id="profDept" class="settings-input" value="Somewhat. Dummy data. To showcase.">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Time Zone</label>
@@ -112,7 +112,7 @@ export function renderSettings() {
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem; grid-column: span 2;">
                                 <label class="settings-label">Biography</label>
-                                <textarea id="profBio" class="settings-input" style="min-height: 80px; resize: vertical;"></textarea>
+                                <textarea id="profBio" class="settings-input" style="min-height: 80px; resize: vertical;">Somewhat. Dummy data. To showcase.</textarea>
                             </div>
                             <div style="grid-column: span 2; display: flex; justify-content: flex-end; margin-top: 1rem;">
                                 <button type="submit" class="gradient-btn" style="padding: 0.6rem 1.5rem;" id="profSaveBtn">Save Changes</button>
@@ -125,22 +125,22 @@ export function renderSettings() {
                 <div id="tab-org" style="display: none;">
                     <div class="glass-card" style="padding: 2rem;">
                         <h3 style="margin: 0 0 1.5rem 0; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Organization Profile</h3>
-                        <form id="orgForm" onsubmit="(window as any).saveOrganization(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <form id="orgForm" onsubmit="window.saveOrganization(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                             <div style="display: flex; flex-direction: column; gap: 0.5rem; grid-column: span 2;">
                                 <label class="settings-label">Organization Name</label>
-                                <input type="text" id="orgName" class="settings-input" required>
+                                <input type="text" id="orgName" class="settings-input" required value="Somewhat. Dummy data. To showcase.">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Industry</label>
-                                <input type="text" id="orgIndustry" class="settings-input">
+                                <input type="text" id="orgIndustry" class="settings-input" value="Somewhat. Dummy data. To showcase.">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <label class="settings-label">Website</label>
-                                <input type="url" id="orgWebsite" class="settings-input">
+                                <input type="url" id="orgWebsite" class="settings-input" value="https://showcase.com">
                             </div>
                             <div style="display: flex; flex-direction: column; gap: 0.5rem; grid-column: span 2;">
                                 <label class="settings-label">Address</label>
-                                <textarea id="orgAddress" class="settings-input" style="min-height: 60px;"></textarea>
+                                <textarea id="orgAddress" class="settings-input" style="min-height: 60px;">Somewhat. Dummy data. To showcase.</textarea>
                             </div>
                             <div style="grid-column: span 2; display: flex; justify-content: flex-end; margin-top: 1rem;">
                                 <button type="submit" class="gradient-btn" style="padding: 0.6rem 1.5rem;" id="orgSaveBtn">Save Changes</button>
@@ -154,10 +154,10 @@ export function renderSettings() {
                     
                     <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
                         <h3 style="margin: 0 0 1.5rem 0; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Change Password</h3>
-                        <form id="passwordForm" onsubmit="(window as any).savePassword(event)" style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px;">
-                            <input type="password" id="currentPwd" placeholder="Current Password" required class="settings-input">
-                            <input type="password" id="newPwd" placeholder="New Password" required minlength="6" class="settings-input">
-                            <input type="password" id="confirmPwd" placeholder="Confirm New Password" required minlength="6" class="settings-input">
+                        <form id="passwordForm" onsubmit="window.savePassword(event)" style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px;">
+                            <input type="password" id="currentPwd" placeholder="Current Password" required class="settings-input" value="password123">
+                            <input type="password" id="newPwd" placeholder="New Password" required minlength="6" class="settings-input" value="password123">
+                            <input type="password" id="confirmPwd" placeholder="Confirm New Password" required minlength="6" class="settings-input" value="password123">
                             <button type="submit" class="gradient-btn" style="padding: 0.6rem; margin-top: 0.5rem;" id="pwdSaveBtn">Update Password</button>
                         </form>
                     </div>
@@ -169,7 +169,7 @@ export function renderSettings() {
                                 <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Add an extra layer of security to your account.</p>
                             </div>
                             <label class="switch">
-                              <input type="checkbox" id="tfaToggle" onchange="(window as any).toggle2FA(this.checked)">
+                              <input type="checkbox" id="tfaToggle" onchange="window.toggle2FA(this.checked)">
                               <span class="slider round"></span>
                             </label>
                         </div>
@@ -178,7 +178,7 @@ export function renderSettings() {
                     <div class="glass-card" style="padding: 2rem;">
                         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
                             <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600;">Logged-in Devices</h3>
-                            <button onclick="(window as any).revokeAllSessions()" style="background: transparent; border: 1px solid var(--border-color); color: var(--danger-color); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Sign Out All Other Devices</button>
+                            <button onclick="window.revokeAllSessions()" style="background: transparent; border: 1px solid var(--border-color); color: var(--danger-color); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">Sign Out All Other Devices</button>
                         </div>
                         <div id="sessionsList" style="display: flex; flex-direction: column; gap: 1rem;">
                             <div style="padding: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">Loading sessions...</div>
@@ -207,7 +207,7 @@ export function renderSettings() {
                 <div id="tab-notifications" style="display: none;">
                     <div class="glass-card" style="padding: 2rem;">
                         <h3 style="margin: 0 0 1.5rem 0; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">Notification Preferences</h3>
-                        <form id="notifForm" onchange="(window as any).savePreferences()" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <form id="notifForm" onchange="window.savePreferences()" style="display: flex; flex-direction: column; gap: 1.5rem;">
                             <label style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
                                 <input type="checkbox" id="prefEmail" style="width: 18px; height: 18px;">
                                 <div>
@@ -248,7 +248,7 @@ export function renderSettings() {
                                 <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; font-weight: 600;">API Access</h3>
                                 <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Manage your API keys for integrating SalesGenie AI with your internal tools.</p>
                             </div>
-                            <button onclick="(window as any).createApiKey()" class="gradient-btn" style="padding: 0.6rem 1.2rem; font-weight: 600; font-size: 0.85rem;">+ Create Key</button>
+                            <button onclick="window.createApiKey()" class="gradient-btn" style="padding: 0.6rem 1.2rem; font-weight: 600; font-size: 0.85rem;">+ Create Key</button>
                         </div>
                         
                         <div id="apiKeysList" style="display: flex; flex-direction: column; gap: 1rem;">
@@ -284,8 +284,8 @@ export function renderSettings() {
                 <h3 style="margin: 0;">Invite Team Member</h3>
                 <button onclick="document.getElementById('inviteModal').style.display='none'" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 1.2rem;">✕</button>
             </div>
-            <form id="inviteForm" onsubmit="(window as any).sendInvite(event)" style="display: flex; flex-direction: column; gap: 1rem;">
-                <input type="email" id="invEmail" placeholder="Email Address" required class="settings-input">
+            <form id="inviteForm" onsubmit="window.sendInvite(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="email" id="invEmail" placeholder="Email Address" required class="settings-input" value="dummy@showcase.com">
                 <select id="invRole" class="settings-input">
                     <option value="sales_rep">Sales Representative</option>
                     <option value="manager">Manager</option>
@@ -370,7 +370,7 @@ export function renderSettings() {
                     ${isMe ? `<span style="background: rgba(255,255,255,0.1); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; text-transform: capitalize;">${m.role}</span>` 
                     : `
                         <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <select onchange="(window as any).changeRole('${m.id}', this.value)" style="background: rgba(255,255,255,0.1); border: 1px solid transparent; color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; outline: none; cursor: pointer;">
+                            <select onchange="window.changeRole('${m.id}', this.value)" style="background: rgba(255,255,255,0.1); border: 1px solid transparent; color: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; outline: none; cursor: pointer;">
                                 <option value="super_admin" ${m.role==='super_admin'?'selected':''}>Super Admin</option>
                                 <option value="admin" ${m.role==='admin'?'selected':''}>Admin</option>
                                 <option value="manager" ${m.role==='manager'?'selected':''}>Manager</option>
@@ -378,10 +378,10 @@ export function renderSettings() {
                                 <option value="viewer" ${m.role==='viewer'?'selected':''}>Viewer</option>
                             </select>
                             ${m.is_active 
-                                ? `<button onclick="(window as any).suspendMbr('${m.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--warning-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Suspend</button>`
-                                : `<button onclick="(window as any).activateMbr('${m.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--success-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Activate</button>`
+                                ? `<button onclick="window.suspendMbr('${m.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--warning-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Suspend</button>`
+                                : `<button onclick="window.activateMbr('${m.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--success-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Activate</button>`
                             }
-                            <button onclick="(window as any).removeMbr('${m.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--danger-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Remove</button>
+                            <button onclick="window.removeMbr('${m.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--danger-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Remove</button>
                         </div>
                     `}
                 </div>
@@ -421,7 +421,7 @@ export function renderSettings() {
                         <div style="font-size: 0.8rem; color: var(--text-secondary);">${s.browser} on ${s.os} • IP: ${s.ip_address}</div>
                         <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">Last active: ${new Date(s.last_active_at).toLocaleString()}</div>
                     </div>
-                    ${!s.is_current ? `<button onclick="(window as any).revokeSess('${s.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--danger-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Revoke</button>` : ''}
+                    ${!s.is_current ? `<button onclick="window.revokeSess('${s.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--danger-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Revoke</button>` : ''}
                 </div>
               `;
           });
@@ -462,8 +462,8 @@ export function renderSettings() {
                         <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Created: ${new Date(k.created_at).toLocaleDateString()}</div>
                     </div>
                     <div style="display: flex; gap: 0.5rem;">
-                        <button onclick="(window as any).rotateKey('${k.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--warning-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Rotate</button>
-                        <button onclick="(window as any).revokeKey('${k.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--danger-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Revoke</button>
+                        <button onclick="window.rotateKey('${k.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--warning-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Rotate</button>
+                        <button onclick="window.revokeKey('${k.id}')" style="background:transparent; border:1px solid var(--border-color); color:var(--danger-color); padding:0.3rem 0.6rem; border-radius:4px; font-size:0.75rem; cursor:pointer;">Revoke</button>
                     </div>
                 </div>
               `;

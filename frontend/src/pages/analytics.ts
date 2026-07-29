@@ -16,7 +16,7 @@ export function renderAnalytics() {
                 <option value="last_quarter">Last Quarter</option>
                 <option value="this_year">This Year</option>
             </select>
-            <button class="gradient-btn" onclick="(window as any).handleExportReport()">Export Report</button>
+            <button class="gradient-btn" onclick="window.handleExportReport()">Export Report</button>
         </div>
     </div>
 

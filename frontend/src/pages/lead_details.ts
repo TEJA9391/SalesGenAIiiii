@@ -258,7 +258,7 @@ function renderProfilePage(lead: any) {
     <div id="tab-notes" class="profile-tab-content" style="display: none;">
       <div class="glass-card" style="margin-bottom: 1.5rem;">
         <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: white;">Add Note</h3>
-        <textarea id="newNoteInput" class="form-textarea" rows="3" placeholder="Add meeting notes, call summaries, use @mentions or #tags..."></textarea>
+        <textarea id="newNoteInput" class="form-textarea" rows="3" placeholder="Add meeting notes, call summaries, use @mentions or #tags...">Somewhat. Dummy data. To showcase.</textarea>
         <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
           <button class="gradient-btn" onclick="saveLeadNote('${lead.id}')">Save Note</button>
         </div>

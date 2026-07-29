@@ -140,7 +140,7 @@ document.addEventListener('input', (e) => {
                 const res = await api.get(`/search?q=${encodeURIComponent(val)}`);
                 if (res.results && res.results.length > 0) {
                     resContainer.innerHTML = res.results.map((r: any) => `
-                        <div class="search-res-item" onclick="(window as any).navigate('${r.link}'); (window as any).closeSearchModal();">
+                        <div class="search-res-item" onclick="window.navigate('${r.link}'); (window as any).closeSearchModal();">
                             <div style="font-weight: 500; font-size: 0.95rem; color: white;">${r.title}</div>
                             <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem;">
                                 <span style="background: rgba(124, 58, 237, 0.2); color: var(--secondary-color); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.65rem; margin-right: 0.5rem;">${r.type}</span>
