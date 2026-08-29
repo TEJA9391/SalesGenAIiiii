@@ -20,7 +20,7 @@ import csv
 import uuid
 
 from core.database import get_db
-from core.deps import get_current_user
+from core.deps import get_current_user, get_current_user_optional
 from models.user import User
 from models.lead_model import LeadModel
 from models.company import Company
@@ -486,10 +486,13 @@ def list_leads(
 @router.post("", status_code=status.HTTP_201_CREATED)
 def create_lead(
     req: LeadCreateRequest,
-    current_user: User = Depends(get_current_user),
+    current_user: User = Depends(get_current_user_optional),
     db: Session = Depends(get_db),
 ):
-    org_id = current_user.organization_id
+    if not isinstance(current_user, User):
+        current_user = get_current_user_optional(credentials=None, db=db)
+
+    org_id = current_user.organization_id if current_user else None
 
     req.website = validate_url(req.website)
     req.phone = validate_phone(req.phone)

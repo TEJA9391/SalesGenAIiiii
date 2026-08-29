@@ -193,6 +193,64 @@ def login_json(request: Request, body: dict, db: Session = Depends(get_db)):
     }
 
 
+class GoogleAuthRequest(BaseModel):
+    email: EmailStr
+    full_name: str
+    picture: Optional[str] = None
+    organization_name: Optional[str] = "Google Workspace Org"
+
+
+@router.post("/google")
+def google_auth(request: Request, body: GoogleAuthRequest, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == body.email, User.deleted_at == None).first()
+    if not user:
+        org = Organization(name=body.organization_name or f"{body.full_name}'s Workspace")
+        db.add(org)
+        db.flush()
+
+        user = User(
+            full_name=body.full_name,
+            email=body.email,
+            hashed_password=get_password_hash(str(uuid.uuid4())),
+            organization_id=org.id,
+            role="super_admin",
+            is_superuser=True,
+            profile_picture=body.picture,
+            last_login_at=datetime.now(timezone.utc)
+        )
+        db.add(user)
+        db.flush()
+
+        notif_pref = NotificationPreference(user_id=user.id)
+        db.add(notif_pref)
+        db.commit()
+        db.refresh(user)
+    else:
+        user.last_login_at = datetime.now(timezone.utc)
+        if body.picture:
+            user.profile_picture = body.picture
+        db.commit()
+
+    access_token, refresh_token, _ = _create_user_session(user.id, db, request)
+
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer",
+        "user": {
+            "id": user.id,
+            "email": user.email,
+            "full_name": user.full_name,
+            "role": user.role,
+            "organization_id": user.organization_id,
+            "phone_number": user.phone_number,
+            "job_title": user.job_title,
+            "department": user.department,
+            "profile_picture": user.profile_picture,
+        },
+    }
+
+
 @router.post("/refresh")
 def refresh_token(req: RefreshRequest, db: Session = Depends(get_db)):
     payload = decode_token(req.refresh_token)

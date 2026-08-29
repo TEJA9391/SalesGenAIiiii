@@ -7,3 +7,5 @@ __pycache__/
 uploads/
 .pytest_cache/
 node_modules/
+scratch/
+google_client_secret.json

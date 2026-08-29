@@ -59,16 +59,78 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from sqlalchemy import event
+from sqlalchemy.engine import Engine
+import time
 import traceback
 from fastapi.responses import PlainTextResponse
 from fastapi import Request
 
-@app.middleware("http")
-async def catch_exceptions_middleware(request: Request, call_next):
+console = Console(force_terminal=True)
+
+# ── Database Real-time Terminal Logging Listener ──
+@event.listens_for(Engine, "after_cursor_execute")
+def receive_after_cursor_execute(conn, cursor, statement, parameters, context, executemany):
     try:
-        return await call_next(request)
+        stmt = statement.strip().upper()
+        if any(stmt.startswith(op) for op in ["INSERT", "UPDATE", "DELETE"]):
+            op = stmt.split()[0]
+            color = "green" if op == "INSERT" else "yellow" if op == "UPDATE" else "red"
+            table_name = "database"
+            try:
+                tokens = stmt.split()
+                if op == "INSERT" and "INTO" in tokens:
+                    table_name = tokens[tokens.index("INTO") + 1].strip('"`[]')
+                elif op == "UPDATE":
+                    table_name = tokens[1].strip('"`[]')
+                elif op == "DELETE" and "FROM" in tokens:
+                    table_name = tokens[tokens.index("FROM") + 1].strip('"`[]')
+            except Exception:
+                pass
+            
+            console.print(f"[bold {color}][DATABASE {op}][/bold {color}] [bold white]table: {table_name}[/bold white]")
+            if parameters:
+                param_str = str(parameters)
+                if len(param_str) > 120:
+                    param_str = param_str[:120] + "..."
+                console.print(f"   [dim cyan]Values: {param_str}[/dim cyan]")
+    except Exception:
+        pass
+
+@app.middleware("http")
+async def rich_terminal_logger_middleware(request: Request, call_next):
+    start_time = time.time()
+    path = request.url.path
+    method = request.method
+    
+    if not path.startswith("/static") and path != "/favicon.ico":
+        try:
+            console.print(f"\n[bold cyan][BACKEND API][/bold cyan] [bold yellow]{method}[/bold yellow] [bold white]{path}[/bold white]")
+        except Exception:
+            pass
+
+    try:
+        response = await call_next(request)
     except Exception as e:
+        try:
+            console.print(f"[bold red][SERVER ERROR][/bold red] {e}")
+        except Exception:
+            pass
         return PlainTextResponse(traceback.format_exc(), status_code=500)
+
+    duration = (time.time() - start_time) * 1000
+
+    if not path.startswith("/static") and path != "/favicon.ico":
+        status_color = "green" if response.status_code < 400 else "red"
+        try:
+            console.print(f"[bold {status_color}][STATUS {response.status_code}][/bold {status_color}] Processed in [dim]{duration:.1f}ms[/dim]")
+        except Exception:
+            pass
+
+    return response
 
 
 # Register all routers (they already carry their /api/* prefix)
@@ -96,6 +158,13 @@ app.include_router(ai_router, prefix="/api/ai", tags=["ai"])
 if has_ws:
     app.include_router(ws_router)
 
+# Setup Database Admin Page
+try:
+    from api.admin import setup_admin
+    setup_admin(app)
+except Exception as e:
+    print(f"[WARN] Database Admin UI disabled: {e}")
+
 
 from fastapi.staticfiles import StaticFiles
 import os
@@ -107,6 +176,15 @@ STATIC_DIR = os.path.join(os.getcwd(), "static")
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 if os.path.exists(STATIC_DIR):
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+from fastapi.responses import FileResponse
+
+@app.get("/", tags=["frontend"])
+def serve_index():
+    index_path = os.path.join(STATIC_DIR, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {"message": "SalesGenie AI Backend is Running"}
 
 @app.get("/api/health", tags=["system"])
 def health_check():
