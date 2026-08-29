@@ -7422,7 +7422,7 @@ SalesGenie Team`
 
       // 2. Standard Google OAuth 2.0 Web Auth Redirection
       const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
-      const redirectUri = window.location.origin;
+      const redirectUri = window.location.href.split('#')[0].split('?')[0];
       const options = {
         redirect_uri: redirectUri,
         client_id: GOOGLE_CLIENT_ID,
